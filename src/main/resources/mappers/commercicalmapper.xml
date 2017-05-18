@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="sun.yu.qiang.commercialweb.mappers.CommercialMapper">
+    
+    <!-- 这里namespace必须是UserMapper接口的路径” -->
+    <insert id="insertcommodity" parameterType="CommercialBean">
+        insert into commercialorder(commodityid,phonenumber,commodityname,commodityprice,commoditylocation) values(#{commodityId},#{phoneNumber},#{commodityName},#{commodityPrice},#{commodityLocation})
+        <!-- 这里sql结尾不能加分号，否则报“ORA-00911”的错误 -->
+    </insert>
+    <!-- 这里的id必须和UserMapper接口中的接口方法名相同 -->
+    <select id="searchcommodity" resultType="CommercialBean" parameterType="java.lang.String">
+        select * from commercialorder where phonenumber=#{phoneNumber}
+    </select> 
+    
+    <select id="searchid" resultType="CommercialBean" parameterType="java.util.HashMap">
+        
+          select * from commercialorder where commodityid
+    </select>
+    
+</mapper> 
